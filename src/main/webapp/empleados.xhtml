@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Gestión de Empleados</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="documentoTipo" value="Tipo de Documento:" />
+            <p:inputText id="documentoTipo" value="#{empleadoBean.empleado.documentoTipo}" />
+
+            <h:outputLabel for="documentoNumero" value="Número de Documento:" />
+            <p:inputText id="documentoNumero" value="#{empleadoBean.empleado.documentoNumero}" />
+
+            <h:outputLabel for="nombres" value="Nombres:" />
+            <p:inputText id="nombres" value="#{empleadoBean.empleado.nombres}" />
+
+            <h:outputLabel for="apellidos" value="Apellidos:" />
+            <p:inputText id="apellidos" value="#{empleadoBean.empleado.apellidos}" />
+
+            <h:outputLabel for="ciudad" value="Ciudad:" />
+            <p:inputText id="ciudad" value="#{empleadoBean.empleado.ciudad}" />
+
+            <h:outputLabel for="direccion" value="Dirección:" />
+            <p:inputText id="direccion" value="#{empleadoBean.empleado.direccion}" />
+
+            <h:outputLabel for="correoElectronico" value="Correo Electrónico:" />
+            <p:inputText id="correoElectronico" value="#{empleadoBean.empleado.correoElectronico}" />
+
+            <h:outputLabel for="telefono" value="Teléfono:" />
+            <p:inputText id="telefono" value="#{empleadoBean.empleado.telefono}" />
+
+            <p:commandButton value="Guardar" action="#{empleadoBean.guardar}" update=":empleados" />
+        </h:panelGrid>
+
+        <p:dataTable id="empleados" value="#{empleadoBean.empleados}" var="empleado">
+            <p:column headerText="ID">
+                <h:outputText value="#{empleado.id}" />
+            </p:column>
+            <p:column headerText="Documento">
+                <h:outputText value="#{empleado.documentoTipo} #{empleado.documentoNumero}" />
+            </p:column>
+            <p:column headerText="Nombre">
+                <h:outputText value="#{empleado.nombres} #{empleado.apellidos}" />
+            </p:column>
+            <p:column headerText="Ciudad">
+                <h:outputText value="#{empleado.ciudad}" />
+            </p:column>
+            <p:column headerText="Acciones">
+                <p:commandButton value="Editar" action="#{empleadoBean.editar(empleado)}" update="@form" />
+                <p:commandButton value="Eliminar" action="#{empleadoBean.eliminar(empleado)}" update="@form" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>

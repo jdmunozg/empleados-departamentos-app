@@ -1,0 +1,8 @@
+com\example\util\JPAUtil.class
+com\example\model\Empleado.class
+com\example\App.class
+com\example\bean\DepartamentoBean.class
+com\example\bean\EmpleadoBean.class
+com\example\service\DepartamentoService.class
+com\example\service\EmpleadoService.class
+com\example\model\Departamento.class
