@@ -44,4 +44,42 @@ Asegúrate de que Maven esté instalado y configurado correctamente. Añade el d
 1. Clona el repositorio o descarga el proyecto a tu máquina local.
 
    ```bash
-   git clone https://github.com/tu-usuario/empleados-departamentos-app.git
+  https://github.com/jdmunozg/empleados-departamentos-app.git
+Navega al directorio del proyecto:
+- cd empleados-departamentos-app
+Ejecuta Maven para compilar y empaquetar la aplicación:
+- mvn clean package
+Desplegar la Aplicación en WildFly
+Asegúrate de que WildFly esté detenido antes de desplegar la aplicación.
+
+Inicia sesión en la consola de administración de WildFly o utiliza el script de línea de comandos para detener el servidor:
+- %WILDFLY_HOME%\bin\jboss-cli.bat --connect command=:shutdown
+Copia el archivo WAR generado (empleados-departamentos-app-1.0-SNAPSHOT.war) en el directorio de despliegue de WildFly:
+- cp target/empleados-departamentos-app-1.0-SNAPSHOT.war %WILDFLY_HOME%\standalone\deployments\
+Inicia WildFly:
+- %WILDFLY_HOME%\bin\standalone.bat
+WildFly desplegará automáticamente el archivo WAR al iniciar. Verás mensajes de despliegue exitoso en la consola.
+
+Acceder a la Aplicación
+Abre un navegador web y navega a la siguiente URL para acceder a la aplicación:
+http://localhost:8080/empleados-departamentos-app-1.0-SNAPSHOT/index.xhtml
+Si todo está configurado correctamente, deberías ver la página de inicio de tu aplicación.
+
+Problemas Comunes y Soluciones
+Error 404 - Not Found
+Si recibes un error 404 - Not Found, verifica los siguientes puntos:
+
+Asegúrate de que el archivo WAR se haya desplegado correctamente en WildFly (standalone\deployments).
+Verifica los logs de WildFly en WILDFLY_HOME\standalone\log\server.log para identificar cualquier problema durante el despliegue.
+Asegúrate de que la estructura del proyecto siga las convenciones estándar de aplicaciones web.
+Error ClassNotFoundException: javax.faces.webapp.FacesServlet
+Asegúrate de que las dependencias de JSF estén correctamente configuradas en tu pom.xml.
+Verifica que WildFly tenga el módulo de JSF habilitado en standalone.xml.
+
+### **Notas Finales**
+
+- Este archivo `README.md` proporciona instrucciones claras para configurar, construir, desplegar y ejecutar tu aplicación en un entorno WildFly.
+- Asegúrate de personalizar el enlace de descarga del repositorio si el proyecto se encuentra en un repositorio específico.
+- Las secciones de problemas comunes y soluciones pueden expandirse según los problemas específicos que encuentres durante el desarrollo.
+
+Si necesitas más información o encuentras otros problemas, ¡no dudes en preguntar!
